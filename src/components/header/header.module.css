@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+
+  background: var(--color-gray);
+}
+
+.logo {
+  color: var(--color-white);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+}
+
+.basket {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.basket__icon {
+  width: 28px;
+  height: 25px;
+  color: var(--color-white);
+}
