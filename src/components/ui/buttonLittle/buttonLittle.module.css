@@ -1,0 +1,19 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 4px;
+
+  border-radius: 4px;
+  background: var(--orange, #F50);
+}
+
+.button:hover {
+
+}
+
+.button:disabled,
+.button[disabled] {
+
+}

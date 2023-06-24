@@ -11,7 +11,6 @@ const roboto = Roboto({
 });
 
 const SFProText = localFont({
-  variable: '--font-SFProText',
   src: [
     {
       path: '../assets/fonts/SFProText-Regular.ttf',
@@ -19,15 +18,21 @@ const SFProText = localFont({
       style: 'normal',
     },
   ],
+  variable: '--font-SFProText',
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="ru" className={`${roboto.variable} ${SFProText.variable}`}>
       <body>
         <Header />
         {children}
         <Footer />
+        <div className="portals"></div>
       </body>
     </html>
   );

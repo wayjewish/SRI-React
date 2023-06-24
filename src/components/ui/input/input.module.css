@@ -1,0 +1,31 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  width: 100%;
+  height: 40px;
+
+  border-radius: 8px;
+  border: 1px solid var(--border-default, #E1E3E6);
+  background: var(--background-primary, #FFF);
+}
+
+.wrapFocus {
+  border: 1px solid var(--orange, #F50);
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+
+  border: none;
+
+  color: var(--text-primary, #1B1F23);
+  font-size: 14px;
+  font-family: var(--font-SFProText);
+  line-height: 20px;
+}
+
+.input::placeholder {
+  color: var(--text-tertiary, #999FA6);
+}
