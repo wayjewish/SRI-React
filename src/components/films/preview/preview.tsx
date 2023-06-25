@@ -2,9 +2,7 @@
 import Image from 'next/image';
 import { IFilmItem } from '../list/list';
 import Box from '@/components/ui/box/box';
-import ButtonLittle from '@/components/ui/buttonLittle/buttonLittle';
-import MinusIcon from '@/assets/icons/minus.svg';
-import PlusIcon from '@/assets/icons/plus.svg';
+import Counter from '../counter/counter';
 import DeleteIcon from '@/assets/icons/close.svg';
 import styles from './preview.module.css';
 
@@ -29,15 +27,7 @@ export default function Preview({ item, abDelete }: IProps) {
         <p className={styles.previewName}>{item.name}</p>
         <p className={styles.previewGenre}>{item.genre}</p>
       </div>
-      <div className={styles.previewCounter}>
-        <ButtonLittle isDisabled={item.count <= 0}>
-          <MinusIcon className={styles.previewCounterIcon} />
-        </ButtonLittle>
-        <p className={styles.previewCounterText}>{item.count}</p>
-        <ButtonLittle>
-          <PlusIcon className={styles.previewCounterIcon} />
-        </ButtonLittle>
-      </div>
+      <Counter count={item.count} />
       {abDelete && (
         <DeleteIcon className={styles.deleteIcon} onClick={handlerDelete} />
       )}
