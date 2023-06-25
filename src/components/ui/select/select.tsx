@@ -6,24 +6,15 @@ import cn from 'classnames';
 import ArrowIcon from '@/assets/icons/arrow.svg';
 import Portal from '../portal/portal';
 
-export interface ISelectItem {
-  id: string;
-  name: string;
-}
-
 interface IProps {
+  obj?: {
+    [index: string]: string;
+  };
   placeholder?: string;
+  onChange?: (value: string | null) => void;
 }
 
-const list: ISelectItem[] = [
-  { id: '1', name: 'item1' },
-  { id: '2', name: 'item2' },
-  { id: '3', name: 'item3' },
-  { id: '4', name: 'item4' },
-  { id: '5', name: 'item5' },
-];
-
-export default function Select({ placeholder }: IProps) {
+export default function Select({ obj, placeholder, onChange }: IProps) {
   const refWrap = useRef<HTMLDivElement>(null);
   const refList = useRef<HTMLUListElement>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -52,9 +43,10 @@ export default function Select({ placeholder }: IProps) {
     }
   };
 
-  const handleClickOnListItem = (newValue: string) => {
+  const handleClickOnListItem = (newValue: string, key?: string) => {
     setValue(newValue);
     setIsOpen(false);
+    if (onChange) onChange(key ? key : null);
   };
 
   useEffect(() => {
@@ -101,16 +93,22 @@ export default function Select({ placeholder }: IProps) {
         <ArrowIcon className={styles.icon} />
       </div>
 
-      {isOpen && (
+      {obj && isOpen && (
         <Portal>
           <ul ref={refList} style={stylesList} className={styles.list}>
-            {list.map((item) => (
+            <li
+              className={styles.item}
+              onClick={() => handleClickOnListItem('')}
+            >
+              Не выбран
+            </li>
+            {Object.entries(obj).map(([key, value]) => (
               <li
-                key={item.id}
+                key={key}
                 className={styles.item}
-                onClick={() => handleClickOnListItem(item.name)}
+                onClick={() => handleClickOnListItem(obj[key], key)}
               >
-                {item.name}
+                {value}
               </li>
             ))}
           </ul>

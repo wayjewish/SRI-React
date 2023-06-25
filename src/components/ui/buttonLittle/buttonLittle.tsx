@@ -5,20 +5,20 @@ import styles from './buttonLittle.module.css';
 interface IProps {
   children: React.ReactNode;
   isDisabled?: boolean;
-  handlerClick?: () => void;
+  onClick?: () => void;
 }
 
 export default function ButtonLittle({
   children,
   isDisabled,
-  handlerClick,
+  onClick,
 }: IProps) {
   return (
     <button
       className={styles.button}
       type="button"
       disabled={isDisabled}
-      onClick={handlerClick}
+      onClick={onClick}
     >
       {children}
     </button>

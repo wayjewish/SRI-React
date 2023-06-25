@@ -1,26 +1,56 @@
 'use client';
+import { useAppSelector } from '@/store/hooks';
 import Preview from '../preview/preview';
 import styles from './list.module.css';
-import { useGetMoviesQuery } from '@/store/services/movieApi';
+import { IMovie, useGetMoviesQuery } from '@/store/services/movieApi';
+import { useEffect, useState } from 'react';
 
 interface IProps {
   abDelete?: boolean;
 }
 
 export default function List({ abDelete }: IProps) {
-  const { data, isLoading, error } = useGetMoviesQuery();
+  const filters = useAppSelector((state) => state.filters);
+  const { data, isLoading, error } = useGetMoviesQuery(
+    filters.cinema !== null ? filters.cinema : undefined,
+  );
+  const [currentData, setCurrentData] = useState(data);
+
+  useEffect(() => {
+    let newData: IMovie[] = [];
+    if (data) newData = data;
+
+    if (filters.title !== null) {
+      newData = newData.filter((movie) =>
+        movie.title
+          .toLocaleLowerCase()
+          .includes((filters.title as string).toLocaleLowerCase()),
+      );
+    }
+
+    if (filters.genre !== null) {
+      console.log(filters.genre);
+      newData = newData.filter((movie) =>
+        movie.genre
+          .toLocaleLowerCase()
+          .includes((filters.genre as string).toLocaleLowerCase()),
+      );
+    }
+
+    setCurrentData(newData);
+  }, [data, filters.title, filters.genre, filters.cinema]);
 
   if (isLoading) {
     return <span>Loading...</span>;
   }
 
-  if (!data || error) {
+  if (!data || !currentData || error) {
     return <span>NotFound</span>;
   }
 
   return (
     <div className={styles.list}>
-      {data.map((item) => (
+      {currentData.map((item) => (
         <Preview key={item.id} item={item} abDelete={abDelete} />
       ))}
     </div>

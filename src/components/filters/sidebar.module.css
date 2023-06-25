@@ -1,0 +1,38 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 360px;
+  height: 100%;
+}
+
+.sidebarTitle {
+  color: var(--text-primary, #1B1F23);
+  font-size: 16px;
+  font-family: var(--font-roboto);
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filterTitle {
+  color: var(--text-primary, #1B1F23);
+  font-size: 14px;
+  font-family: var(--font-SFProText);
+  line-height: 20px;
+}
+
+
+
+

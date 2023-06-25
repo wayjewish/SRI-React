@@ -6,10 +6,15 @@ import cn from 'classnames';
 
 interface IProps {
   placeholder?: string;
+  onChange?: (value: string) => void;
 }
 
-export default function Input({ placeholder }: IProps) {
+export default function Input({ placeholder, onChange }: IProps) {
   const [focused, setFocused] = useState(false);
+
+  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+    if (onChange) onChange(e.currentTarget.value);
+  };
 
   return (
     <div
@@ -23,6 +28,7 @@ export default function Input({ placeholder }: IProps) {
         placeholder={placeholder}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
+        onChange={handleChange}
       />
     </div>
   );

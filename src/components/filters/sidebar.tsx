@@ -7,14 +7,8 @@ import {
   setFilterGenre,
   setFilterTitle,
 } from '@/store/features/filtersSlice';
-import {
-  useGetCinemasQuery,
-  useGetMoviesQuery,
-} from '@/store/services/movieApi';
 
 export default function Sidebar() {
-  const moviesQuery = useGetMoviesQuery(undefined);
-  const cinemasQuery = useGetCinemasQuery();
   const dispatch = useAppDispatch();
 
   return (
@@ -35,24 +29,20 @@ export default function Sidebar() {
         <div className={styles.filter}>
           <p className={styles.filterTitle}>Жанр</p>
           <Select
-            obj={moviesQuery.data?.reduce(
-              (obj, item) => ({ ...obj, [item.genre]: item.genre }),
-              {},
-            )}
             placeholder="Выберите жанр"
-            onChange={(value) => dispatch(setFilterGenre(value))}
+            onChange={(value: string) =>
+              dispatch(setFilterGenre(value ? value : null))
+            }
           />
         </div>
 
         <div className={styles.filter}>
           <p className={styles.filterTitle}>Кинотеатр</p>
           <Select
-            obj={cinemasQuery.data?.reduce(
-              (obj, cinema) => ({ ...obj, [cinema.id]: cinema.name }),
-              {},
-            )}
             placeholder="Выберите кинотеатр"
-            onChange={(value) => dispatch(setFilterCinema(value))}
+            onChange={(value: string) =>
+              dispatch(setFilterCinema(value ? value : null))
+            }
           />
         </div>
       </div>
