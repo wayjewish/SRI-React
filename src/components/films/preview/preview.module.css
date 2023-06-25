@@ -57,3 +57,9 @@
   line-height: 20px;
 }
 
+.deleteIcon {
+  width: 20px;
+  height: 20px;
+  color: var(--color-gray);
+  cursor: pointer;
+}

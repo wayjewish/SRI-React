@@ -1,7 +1,6 @@
-import styles from './page.module.css';
-import Sidebar from '@/components/sidebar/sidebar';
-import Box from '@/components/ui/box/box';
 import List, { IFilmItem } from '@/components/films/list/list';
+import Box from '@/components/ui/box/box';
+import styles from './page.module.css';
 
 const list: IFilmItem[] = [
   { id: '1', name: 'item1', genre: 'Фэнтези', count: 0 },
@@ -11,13 +10,14 @@ const list: IFilmItem[] = [
   { id: '5', name: 'item5', genre: 'Фэнтези', count: 0 },
 ];
 
-export default function Home() {
+export default function Basket() {
   return (
     <main className={styles.main}>
-      <Box>
-        <Sidebar />
+      <List list={list} abDelete={true} />
+      <Box className={styles.mainBox}>
+        <p>Итого билетов:</p>
+        <p>7</p>
       </Box>
-      <List list={list} />
     </main>
   );
 }

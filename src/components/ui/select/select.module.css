@@ -14,7 +14,7 @@
   cursor: pointer;
 }
 
-.wrapFocus {
+.wrapOpen {
   border: 1px solid var(--orange, #F50);
 }
 

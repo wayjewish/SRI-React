@@ -26,7 +26,7 @@ const list: ISelectItem[] = [
 export default function Select({ placeholder }: IProps) {
   const refWrap = useRef<HTMLDivElement>(null);
   const refList = useRef<HTMLUListElement>(null);
-  const [isActive, setIsActive] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState('');
   const [stylesList, setStylesList] = useState<{
     top: number;
@@ -39,7 +39,7 @@ export default function Select({ placeholder }: IProps) {
   });
 
   const handleScroll = () => {
-    setIsActive(false);
+    setIsOpen(false);
   };
 
   const handleClickOutside = (e: MouseEvent) => {
@@ -48,13 +48,13 @@ export default function Select({ placeholder }: IProps) {
       !refWrap.current.contains(e.target as Node) &&
       !refList.current.contains(e.target as Node)
     ) {
-      setIsActive(false);
+      setIsOpen(false);
     }
   };
 
   const handleClickOnListItem = (newValue: string) => {
     setValue(newValue);
-    setIsActive(false);
+    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -87,9 +87,9 @@ export default function Select({ placeholder }: IProps) {
       <div
         ref={refWrap}
         className={cn(styles.wrap, {
-          [styles.wrapFocus]: isActive,
+          [styles.wrapOpen]: isOpen,
         })}
-        onClick={() => setIsActive((prev) => !prev)}
+        onClick={() => setIsOpen((prev) => !prev)}
       >
         <input
           className={styles.input}
@@ -101,7 +101,7 @@ export default function Select({ placeholder }: IProps) {
         <ArrowIcon className={styles.icon} />
       </div>
 
-      {isActive && (
+      {isOpen && (
         <Portal>
           <ul ref={refList} style={stylesList} className={styles.list}>
             {list.map((item) => (

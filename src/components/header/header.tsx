@@ -8,9 +8,11 @@ export default function Header() {
       <Link href="/">
         <div className={styles.logo}>Билетопоиск</div>
       </Link>
-      <div className={styles.basket}>
-        <BasketIcon className={styles.basket__icon} />
-      </div>
+      <Link className={styles.link} href="/basket">
+        <div className={styles.basket}>
+          <BasketIcon className={styles.basket__icon} />
+        </div>
+      </Link>
     </header>
   );
 }
