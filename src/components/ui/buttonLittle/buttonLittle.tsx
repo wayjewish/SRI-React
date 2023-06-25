@@ -1,14 +1,26 @@
 'use client';
 
-import { useState } from 'react';
-import styles from './input.module.css';
+import styles from './buttonLittle.module.css';
 
-export default function ButtonLittle() {
-  const [hovered, setHovered] = useState(false);
+interface IProps {
+  children: React.ReactNode;
+  isDisabled?: boolean;
+  handlerClick?: () => void;
+}
 
+export default function ButtonLittle({
+  children,
+  isDisabled,
+  handlerClick,
+}: IProps) {
   return (
-    <div>
-      <input className={styles.input} type="text" />
-    </div>
+    <button
+      className={styles.button}
+      type="button"
+      disabled={isDisabled}
+      onClick={handlerClick}
+    >
+      {children}
+    </button>
   );
 }

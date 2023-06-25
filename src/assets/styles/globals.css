@@ -13,6 +13,8 @@
 
   --white: #FFF;
   --orange: #F50;
+  --orange-hover: #E94E00;
+  --orange-disabled: #FFA375;
 
   --icons-tertiary: #999FA6;
 }
@@ -51,6 +53,9 @@ a {
   text-decoration: none;
 }
 
+button {
+  border: none;
+}
 
 input:focus {
   outline: 0;
