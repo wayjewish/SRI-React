@@ -3,6 +3,7 @@ import { Roboto } from 'next/font/google';
 import localFont from 'next/font/local';
 import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
+import { StoreProvider } from '@/store/StoreProvider';
 
 const roboto = Roboto({
   weight: ['400', '500', '700'],
@@ -29,10 +30,12 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${roboto.variable} ${SFProText.variable}`}>
       <body>
-        <Header />
-        {children}
-        <Footer />
-        <div className="portals"></div>
+        <StoreProvider>
+          <Header />
+          {children}
+          <Footer />
+          <div className="portals"></div>
+        </StoreProvider>
       </body>
     </html>
   );

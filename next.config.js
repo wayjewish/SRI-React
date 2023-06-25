@@ -8,6 +8,14 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i.postimg.cc',
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
