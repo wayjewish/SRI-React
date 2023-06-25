@@ -12,7 +12,7 @@ export interface ISelectItem {
 }
 
 interface IProps {
-  list: ISelectItem[];
+  placeholder?: string;
 }
 
 const list: ISelectItem[] = [
@@ -23,7 +23,7 @@ const list: ISelectItem[] = [
   { id: '5', name: 'item5' },
 ];
 
-export default function Select() {
+export default function Select({ placeholder }: IProps) {
   const refWrap = useRef<HTMLDivElement>(null);
   const refList = useRef<HTMLUListElement>(null);
   const [isActive, setIsActive] = useState(false);
@@ -91,7 +91,13 @@ export default function Select() {
         })}
         onClick={() => setIsActive((prev) => !prev)}
       >
-        <input className={styles.input} type="text" value={value} readOnly />
+        <input
+          className={styles.input}
+          type="text"
+          value={value}
+          readOnly
+          placeholder={placeholder}
+        />
         <ArrowIcon className={styles.icon} />
       </div>
 

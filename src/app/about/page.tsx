@@ -4,7 +4,7 @@ import styles from './page.module.css';
 export default function About() {
   return (
     <main>
-      <Box className={styles.faqBox}>
+      <Box className={styles.aboutBox}>
         <h1>О нас</h1>
         <p>
           Мы — крупнейший сервис о кино в рунете. На нем вы сможете посмотреть

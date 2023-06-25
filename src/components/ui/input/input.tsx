@@ -4,7 +4,11 @@ import { useState } from 'react';
 import styles from './input.module.css';
 import cn from 'classnames';
 
-export default function Input() {
+interface IProps {
+  placeholder?: string;
+}
+
+export default function Input({ placeholder }: IProps) {
   const [focused, setFocused] = useState(false);
 
   return (
@@ -16,6 +20,7 @@ export default function Input() {
       <input
         className={styles.input}
         type="text"
+        placeholder={placeholder}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
       />

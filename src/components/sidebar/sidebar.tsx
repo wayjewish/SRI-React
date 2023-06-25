@@ -10,17 +10,17 @@ export default function Sidebar() {
       <div className={styles.filters}>
         <div className={styles.filter}>
           <p className={styles.filterTitle}>Название</p>
-          <Input />
+          <Input placeholder="Введите название" />
         </div>
 
         <div className={styles.filter}>
           <p className={styles.filterTitle}>Жанр</p>
-          <Select />
+          <Select placeholder="Выберите жанр" />
         </div>
 
         <div className={styles.filter}>
           <p className={styles.filterTitle}>Кинотеатр</p>
-          <Select />
+          <Select placeholder="Выберите кинотеатр" />
         </div>
       </div>
     </aside>
