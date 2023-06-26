@@ -4,12 +4,16 @@ import Box from '@/components/ui/box/box';
 import Counter from '../counter/counter';
 import styles from './detail.module.css';
 import { useGetMovieQuery } from '@/store/services/movieApi';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { addOneBasket, removeOneBasket } from '@/store/features/basketSlice';
 
 interface IProps {
   id: string;
 }
 
 export default function Detail({ id }: IProps) {
+  const count: number | undefined = useAppSelector((state) => state.basket[id]);
+  const dispatch = useAppDispatch();
   const { data, isLoading, error } = useGetMovieQuery(id);
 
   if (isLoading) {
@@ -28,13 +32,18 @@ export default function Detail({ id }: IProps) {
         width={400}
         height={500}
         alt={data.title}
+        priority={true}
       />
 
       <div className={styles.detailContent}>
         <div className={styles.detailContentTop}>
           <div className={styles.detailHeader}>
             <h1 className={styles.detailTitle}>{data.title}</h1>
-            <Counter count={0} />
+            <Counter
+              count={count ? count : 0}
+              handlerMinus={() => dispatch(removeOneBasket(id))}
+              handlerPlus={() => dispatch(addOneBasket(id))}
+            />
           </div>
 
           <div className={styles.detailParams}>
