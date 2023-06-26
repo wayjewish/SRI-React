@@ -16,7 +16,7 @@ export default function Counter({ count, handlerMinus, handlerPlus }: IProps) {
         <MinusIcon className={styles.counterIcon} onClick={handlerMinus} />
       </ButtonLittle>
       <p className={styles.counterText}>{count}</p>
-      <ButtonLittle>
+      <ButtonLittle isDisabled={count >= 30}>
         <PlusIcon className={styles.counterIcon} onClick={handlerPlus} />
       </ButtonLittle>
     </div>
