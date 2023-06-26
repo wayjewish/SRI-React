@@ -11,6 +11,9 @@ import {
   removeOneBasket,
 } from '@/store/features/basketSlice';
 import Counter from '@/components/movies/counter/counter';
+import PortalModal from '@/components/ui/portal/portalModal';
+import Modal from '../modal/modal';
+import { useState } from 'react';
 
 interface IProps {
   item: IMovie;
@@ -21,6 +24,12 @@ export default function Preview({ item }: IProps) {
     (state) => state.basket[item.id],
   );
   const dispatch = useAppDispatch();
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const handleRemove = () => {
+    dispatch(removeBasket(item.id));
+    setIsOpenModal(false);
+  };
 
   return (
     <Box className={styles.preview}>
@@ -46,8 +55,18 @@ export default function Preview({ item }: IProps) {
 
       <DeleteIcon
         className={styles.deleteIcon}
-        onClick={() => dispatch(removeBasket(item.id))}
+        onClick={() => setIsOpenModal(true)}
       />
+
+      {isOpenModal && (
+        <PortalModal>
+          <Modal
+            onClickYes={handleRemove}
+            onClickNo={() => setIsOpenModal(false)}
+            onClickClose={() => setIsOpenModal(false)}
+          />
+        </PortalModal>
+      )}
     </Box>
   );
 }

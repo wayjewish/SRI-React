@@ -34,7 +34,8 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
-          <div className="portals"></div>
+          <div className="portalSelect"></div>
+          <div className="portalsModal"></div>
         </StoreProvider>
       </body>
     </html>

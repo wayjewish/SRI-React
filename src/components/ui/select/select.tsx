@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './select.module.css';
 import cn from 'classnames';
 import ArrowIcon from '@/assets/icons/arrow.svg';
-import Portal from '../portal/portal';
+import PortalSelect from '../portal/portalSelect';
 
 interface IProps {
   value: string;
@@ -99,7 +99,7 @@ export default function Select({
       </div>
 
       {obj && isOpen && (
-        <Portal>
+        <PortalSelect>
           <ul ref={refList} style={stylesList} className={styles.list}>
             <li
               className={styles.item}
@@ -117,7 +117,7 @@ export default function Select({
               </li>
             ))}
           </ul>
-        </Portal>
+        </PortalSelect>
       )}
     </div>
   );
