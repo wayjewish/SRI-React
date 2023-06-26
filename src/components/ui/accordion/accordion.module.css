@@ -15,7 +15,6 @@
 
   color: var(--text-primary, #1B1F23);
   font-size: 24px;
-  font-family: var(--font-roboto); 
   font-weight: 600;
   line-height: 32px;
 }

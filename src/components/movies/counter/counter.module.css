@@ -12,7 +12,6 @@
 .counterText {
   color: var(--text-primary, #1B1F23);
   font-size: 20px;
-  font-family: var(--font-roboto);
   font-weight: 600;
   line-height: 20px;
 }
