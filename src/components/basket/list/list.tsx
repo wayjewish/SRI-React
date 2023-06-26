@@ -1,10 +1,10 @@
 'use client';
 import { useAppSelector } from '@/store/hooks';
-import Preview from '../preview/preview';
+import BacketPreview from '../preview/preview';
 import styles from './list.module.css';
 import { useGetMoviesQuery } from '@/store/services/movieApi';
 
-export default function List() {
+export default function BacketList() {
   const basket = useAppSelector((state) => state.basket);
   const { data, isLoading, error } = useGetMoviesQuery(null);
 
@@ -25,7 +25,7 @@ export default function List() {
       {data
         .filter((movie) => basket[movie.id] !== undefined)
         .map((item) => (
-          <Preview key={item.id} item={item} />
+          <BacketPreview key={item.id} item={item} />
         ))}
     </div>
   );

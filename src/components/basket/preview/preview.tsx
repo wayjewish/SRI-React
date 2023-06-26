@@ -19,7 +19,7 @@ interface IProps {
   item: IMovie;
 }
 
-export default function Preview({ item }: IProps) {
+export default function BacketPreview({ item }: IProps) {
   const count: number | undefined = useAppSelector(
     (state) => state.basket[item.id],
   );

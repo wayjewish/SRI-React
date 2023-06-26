@@ -7,7 +7,7 @@ interface IProps {
   movieId: string;
 }
 
-export default function List({ movieId }: IProps) {
+export default function ReviewsList({ movieId }: IProps) {
   const { data, isLoading, error } = useGetReviewsQuery(movieId);
 
   if (isLoading) {

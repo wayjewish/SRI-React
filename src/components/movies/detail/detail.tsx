@@ -6,13 +6,13 @@ import styles from './detail.module.css';
 import { useGetMovieQuery } from '@/store/services/movieApi';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { addOneBasket, removeOneBasket } from '@/store/features/basketSlice';
-import List from '@/components/reviews/list/list';
+import ReviewsList from '@/components/reviews/list/list';
 
 interface IProps {
   id: string;
 }
 
-export default function Detail({ id }: IProps) {
+export default function MovieDetail({ id }: IProps) {
   const count: number | undefined = useAppSelector((state) => state.basket[id]);
   const dispatch = useAppDispatch();
   const { data, isLoading, error } = useGetMovieQuery(id);
@@ -75,7 +75,7 @@ export default function Detail({ id }: IProps) {
         </div>
       </Box>
 
-      <List movieId={id} />
+      <ReviewsList movieId={id} />
     </div>
   );
 }

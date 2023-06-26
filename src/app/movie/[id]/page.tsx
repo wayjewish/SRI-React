@@ -1,5 +1,5 @@
 'use client';
-import Detail from '@/components/movies/detail/detail';
+import FilmDetail from '@/components/movies/detail/detail';
 
 interface IProps {
   params: { id: string };
@@ -8,7 +8,7 @@ interface IProps {
 export default function Film({ params }: IProps) {
   return (
     <main>
-      <Detail id={params.id} />
+      <FilmDetail id={params.id} />
     </main>
   );
 }

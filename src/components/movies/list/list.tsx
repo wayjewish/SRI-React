@@ -1,11 +1,11 @@
 'use client';
 import { useAppSelector } from '@/store/hooks';
-import Preview from '../preview/preview';
+import MoviePreview from '../preview/preview';
 import styles from './list.module.css';
 import { IMovie, useGetMoviesQuery } from '@/store/services/movieApi';
 import { useEffect, useState } from 'react';
 
-export default function List() {
+export default function MoviesList() {
   const filters = useAppSelector((state) => state.filters);
   const { data, isLoading, isFetching, error } = useGetMoviesQuery(
     filters.cinema,
@@ -46,7 +46,7 @@ export default function List() {
   return (
     <div className={styles.list}>
       {currentData.map((item) => (
-        <Preview key={item.id} item={item} />
+        <MoviePreview key={item.id} item={item} />
       ))}
     </div>
   );
