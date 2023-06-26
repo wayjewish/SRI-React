@@ -5,15 +5,22 @@ import styles from './input.module.css';
 import cn from 'classnames';
 
 interface IProps {
+  value: string;
   placeholder?: string;
-  onChange?: (value: string) => void;
+  onChange: (value: string) => void;
 }
 
-export default function Input({ placeholder, onChange }: IProps) {
+export default function Input({
+  value: valueProp,
+  placeholder,
+  onChange,
+}: IProps) {
+  const [value, setValue] = useState(valueProp);
   const [focused, setFocused] = useState(false);
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    if (onChange) onChange(e.currentTarget.value);
+    setValue(e.currentTarget.value);
+    onChange(e.currentTarget.value);
   };
 
   return (
@@ -25,6 +32,7 @@ export default function Input({ placeholder, onChange }: IProps) {
       <input
         className={styles.input}
         type="text"
+        value={value}
         placeholder={placeholder}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}

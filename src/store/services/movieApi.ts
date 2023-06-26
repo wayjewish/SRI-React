@@ -29,14 +29,9 @@ export const movieApi = createApi({
   reducerPath: 'movie',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/api/' }),
   endpoints: (builder) => ({
-    getMovies: builder.query<IMovie[], string | undefined>({
-      query: (cinemaId) => {
-        //cinemaId ? `movies?cinemaId=${cinemaId}` : 'movies',
-        return {
-          url: 'movies',
-          params: { cinemaId },
-        };
-      },
+    getMovies: builder.query<IMovie[], string | null>({
+      query: (cinemaId) =>
+        cinemaId !== null ? `movies?cinemaId=${cinemaId}` : 'movies',
     }),
     getMovie: builder.query<IMovie, string>({
       query: (movieId) => `movie?movieId=${movieId}`,

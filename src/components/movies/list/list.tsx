@@ -11,8 +11,8 @@ interface IProps {
 
 export default function List({ abDelete }: IProps) {
   const filters = useAppSelector((state) => state.filters);
-  const { data, isLoading, error } = useGetMoviesQuery(
-    filters.cinema !== null ? filters.cinema : undefined,
+  const { data, isLoading, isFetching, error } = useGetMoviesQuery(
+    filters.cinema,
   );
   const [currentData, setCurrentData] = useState(data);
 
@@ -40,7 +40,7 @@ export default function List({ abDelete }: IProps) {
     setCurrentData(newData);
   }, [data, filters.title, filters.genre, filters.cinema]);
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return <span>Loading...</span>;
   }
 

@@ -7,18 +7,24 @@ import ArrowIcon from '@/assets/icons/arrow.svg';
 import Portal from '../portal/portal';
 
 interface IProps {
-  obj?: {
+  value: string;
+  obj: {
     [index: string]: string;
   };
   placeholder?: string;
-  onChange?: (value: string | null) => void;
+  onChange: (value: string) => void;
 }
 
-export default function Select({ obj, placeholder, onChange }: IProps) {
+export default function Select({
+  value: initialValue,
+  obj,
+  placeholder,
+  onChange,
+}: IProps) {
   const refWrap = useRef<HTMLDivElement>(null);
   const refList = useRef<HTMLUListElement>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(initialValue);
   const [stylesList, setStylesList] = useState<{
     top: number;
     left: number;
@@ -43,10 +49,10 @@ export default function Select({ obj, placeholder, onChange }: IProps) {
     }
   };
 
-  const handleClickOnListItem = (newValue: string, key?: string) => {
-    setValue(newValue);
+  const handleClickOnListItem = (key: string) => {
     setIsOpen(false);
-    if (onChange) onChange(key ? key : null);
+    setValue(key ? obj[key] : '');
+    onChange(key);
   };
 
   useEffect(() => {
@@ -106,7 +112,7 @@ export default function Select({ obj, placeholder, onChange }: IProps) {
               <li
                 key={key}
                 className={styles.item}
-                onClick={() => handleClickOnListItem(obj[key], key)}
+                onClick={() => handleClickOnListItem(key)}
               >
                 {value}
               </li>
