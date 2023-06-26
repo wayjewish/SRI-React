@@ -1,9 +1,11 @@
 .sidebar {
+  position: sticky;
+  top: 100px;
+
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 360px;
-  height: 100%;
 }
 
 .sidebarTitle {

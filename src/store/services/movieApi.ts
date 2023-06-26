@@ -25,6 +25,15 @@ export interface ICinema {
   movieIds: string[];
 }
 
+const genres: {
+  [index: string]: string;
+} = {
+  fantasy: 'Фэнтези',
+  horror: 'Ужасы',
+  action: 'Боевик',
+  comedy: 'Комедия',
+};
+
 export const movieApi = createApi({
   reducerPath: 'movie',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/api/' }),
@@ -32,6 +41,11 @@ export const movieApi = createApi({
     getMovies: builder.query<IMovie[], string | null>({
       query: (cinemaId) =>
         cinemaId !== null ? `movies?cinemaId=${cinemaId}` : 'movies',
+      transformResponse: (response: IMovie[]) => {
+        return response.map((movie) => {
+          return { ...movie, genre: genres[movie.genre] };
+        });
+      },
     }),
     getMovie: builder.query<IMovie, string>({
       query: (movieId) => `movie?movieId=${movieId}`,
