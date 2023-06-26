@@ -6,6 +6,7 @@ import { useAppSelector } from '@/store/hooks';
 
 export default function Header() {
   const basket = useAppSelector((state) => state.basket);
+  const count = Object.values(basket).reduce((sum, num) => sum + num, 0);
 
   return (
     <header className={styles.header}>
@@ -14,9 +15,7 @@ export default function Header() {
       </Link>
       <Link className={styles.link} href="/basket">
         <div className={styles.basket}>
-          <div className={styles.basketNum}>
-            {Object.values(basket).reduce((sum, num) => sum + num, 0)}
-          </div>
+          {count > 0 && <div className={styles.basketNum}>{count}</div>}
           <BasketIcon className={styles.basketIcon} />
         </div>
       </Link>

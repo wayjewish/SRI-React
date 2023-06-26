@@ -5,11 +5,7 @@ import styles from './list.module.css';
 import { IMovie, useGetMoviesQuery } from '@/store/services/movieApi';
 import { useEffect, useState } from 'react';
 
-interface IProps {
-  abDelete?: boolean;
-}
-
-export default function List({ abDelete }: IProps) {
+export default function List() {
   const filters = useAppSelector((state) => state.filters);
   const { data, isLoading, isFetching, error } = useGetMoviesQuery(
     filters.cinema,
