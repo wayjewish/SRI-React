@@ -49,6 +49,9 @@ export const movieApi = createApi({
     }),
     getMovie: builder.query<IMovie, string>({
       query: (movieId) => `movie?movieId=${movieId}`,
+      transformResponse: (response: IMovie) => {
+        return { ...response, genre: genres[response.genre] };
+      },
     }),
     getReviews: builder.query<IReview[], string>({
       query: (movieId) => `reviews?movieId=${movieId}`,

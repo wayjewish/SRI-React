@@ -1,12 +1,16 @@
 'use client';
-import Link from 'next/link';
 import Image from 'next/image';
 import Box from '@/components/ui/box/box';
-import Counter from '../counter/counter';
+import DeleteIcon from '@/assets/icons/close.svg';
 import styles from './preview.module.css';
 import { IMovie } from '@/store/services/movieApi';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { addOneBasket, removeOneBasket } from '@/store/features/basketSlice';
+import {
+  addOneBasket,
+  removeBasket,
+  removeOneBasket,
+} from '@/store/features/basketSlice';
+import Counter from '@/components/movies/counter/counter';
 
 interface IProps {
   item: IMovie;
@@ -28,16 +32,21 @@ export default function Preview({ item }: IProps) {
         alt={item.title}
         loading="lazy"
       />
+
       <div className={styles.previewText}>
-        <Link href={`/movie/${item.id}`}>
-          <p className={styles.previewName}>{item.title}</p>
-        </Link>
+        <p className={styles.previewName}>{item.title}</p>
         <p className={styles.previewGenre}>{item.genre}</p>
       </div>
+
       <Counter
         count={count ? count : 0}
         handlerMinus={() => dispatch(removeOneBasket(item.id))}
         handlerPlus={() => dispatch(addOneBasket(item.id))}
+      />
+
+      <DeleteIcon
+        className={styles.deleteIcon}
+        onClick={() => dispatch(removeBasket(item.id))}
       />
     </Box>
   );

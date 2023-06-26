@@ -32,7 +32,7 @@ export default function Detail({ id }: IProps) {
         width={400}
         height={500}
         alt={data.title}
-        priority={true}
+        loading="lazy"
       />
 
       <div className={styles.detailContent}>

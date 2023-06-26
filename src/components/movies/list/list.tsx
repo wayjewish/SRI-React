@@ -51,7 +51,7 @@ export default function List({ abDelete }: IProps) {
   return (
     <div className={styles.list}>
       {currentData.map((item) => (
-        <Preview key={item.id} item={item} abDelete={abDelete} />
+        <Preview key={item.id} item={item} />
       ))}
     </div>
   );

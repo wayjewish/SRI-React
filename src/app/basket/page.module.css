@@ -4,14 +4,3 @@
   justify-content: space-between;
   gap: 24px;
 }
-
-.mainBox {
-  display: flex;
-  justify-content: space-between;
-
-  color: var(--text-primary, #1B1F23);
-  font-size: 20px;
-  font-family: var(--font-roboto); 
-  font-weight: 600;
-  line-height: 20px;
-}
