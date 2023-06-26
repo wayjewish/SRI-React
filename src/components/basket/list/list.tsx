@@ -8,8 +8,6 @@ export default function List() {
   const basket = useAppSelector((state) => state.basket);
   const { data, isLoading, error } = useGetMoviesQuery(null);
 
-  console.log(basket);
-
   if (!(Object.keys(basket).length > 0)) {
     return <span>Корзина пуста</span>;
   }

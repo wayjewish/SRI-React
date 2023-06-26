@@ -51,7 +51,6 @@ export default function Select({
   const handleClickOnSelect = () => {
     if (!refWrap.current) return;
     const rect = refWrap.current.getBoundingClientRect();
-    console.log(rect);
 
     setStylesList({
       top: rect.top + rect.height,

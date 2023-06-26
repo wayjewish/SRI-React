@@ -25,7 +25,6 @@ export default function List() {
     }
 
     if (filters.genre !== null) {
-      console.log(filters.genre);
       newData = newData.filter((movie) =>
         movie.genre
           .toLocaleLowerCase()
