@@ -49,6 +49,20 @@ export default function Select({
     }
   };
 
+  const handleClickOnSelect = () => {
+    if (!refWrap.current) return;
+    const rect = refWrap.current.getBoundingClientRect();
+    console.log(rect);
+
+    setStylesList({
+      top: rect.top + rect.height,
+      left: rect.left,
+      width: `${rect.width}px`,
+    });
+
+    setIsOpen(true);
+  };
+
   const handleClickOnListItem = (key: string) => {
     setIsOpen(false);
     setValue(key ? obj[key] : '');
@@ -65,21 +79,6 @@ export default function Select({
     };
   }, []);
 
-  useEffect(() => {
-    console.dir(refWrap.current);
-
-    if (!refWrap.current) return;
-
-    const rect = refWrap.current.getBoundingClientRect();
-    console.log(rect);
-
-    setStylesList({
-      top: rect.top + rect.height,
-      left: rect.left,
-      width: `${rect.width}px`,
-    });
-  }, []);
-
   return (
     <div className={styles.select}>
       <div
@@ -87,7 +86,7 @@ export default function Select({
         className={cn(styles.wrap, {
           [styles.wrapOpen]: isOpen,
         })}
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={handleClickOnSelect}
       >
         <input
           className={styles.input}
