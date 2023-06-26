@@ -12,7 +12,7 @@ export const basketSlice = createSlice({
   reducers: {
     addOneBasket: (state, action: PayloadAction<string>) => {
       const key = action.payload;
-      if (state[key]) {
+      if (state[key] !== undefined) {
         if (state[key] < 30) state[key]++;
       } else {
         state[key] = 1;
@@ -21,17 +21,12 @@ export const basketSlice = createSlice({
     removeOneBasket: (state, action: PayloadAction<string>) => {
       const key = action.payload;
 
-      if (state[key]) {
-        if (state[key] > 0) {
-          state[key] -= 1;
-        } else {
-          delete state[key];
-        }
-      }
+      if (state[key] > 0) state[key] -= 1;
+      if (state[key] <= 0) delete state[key];
     },
     removeBasket: (state, action: PayloadAction<string>) => {
       const key = action.payload;
-      if (state[key]) delete state[key];
+      delete state[key];
     },
   },
 });
