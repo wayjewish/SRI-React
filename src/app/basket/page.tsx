@@ -1,3 +1,4 @@
+'use client';
 import List from '@/components/basket/list/list';
 import Panel from '@/components/basket/panel/panel';
 import styles from './page.module.css';

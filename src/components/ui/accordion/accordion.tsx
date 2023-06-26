@@ -1,5 +1,4 @@
 'use client';
-
 import { useState } from 'react';
 import ArrowIcon from '@/assets/icons/arrow.svg';
 import styles from './accordion.module.css';

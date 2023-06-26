@@ -1,5 +1,4 @@
 'use client';
-
 import Box from '@/components/ui/box/box';
 import Accordion from '@/components/ui/accordion/accordion';
 import styles from './page.module.css';

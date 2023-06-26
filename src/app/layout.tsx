@@ -1,3 +1,4 @@
+'use client';
 import '@/assets/styles/globals.css';
 import { Roboto } from 'next/font/google';
 import localFont from 'next/font/local';

@@ -1,3 +1,4 @@
+'use client';
 import Box from '../../ui/box/box';
 import styles from './review.module.css';
 import PhotoIcon from '@/assets/icons/photo.svg';

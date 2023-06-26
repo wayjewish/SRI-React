@@ -1,3 +1,4 @@
+'use client';
 import styles from './counter.module.css';
 import ButtonLittle from '@/components/ui/buttonLittle/buttonLittle';
 import MinusIcon from '@/assets/icons/minus.svg';

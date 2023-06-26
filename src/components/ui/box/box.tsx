@@ -1,3 +1,4 @@
+'use client';
 import styles from './box.module.css';
 import cn from 'classnames';
 

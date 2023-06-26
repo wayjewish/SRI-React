@@ -1,5 +1,4 @@
 'use client';
-
 import styles from './buttonLittle.module.css';
 
 interface IProps {

@@ -1,3 +1,4 @@
+'use client';
 import Box from '@/components/ui/box/box';
 import styles from './page.module.css';
 

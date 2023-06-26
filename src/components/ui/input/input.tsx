@@ -1,5 +1,4 @@
 'use client';
-
 import { useState } from 'react';
 import styles from './input.module.css';
 import cn from 'classnames';
