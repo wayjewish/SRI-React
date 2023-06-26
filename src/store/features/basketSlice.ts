@@ -12,7 +12,8 @@ export const basketSlice = createSlice({
   reducers: {
     addOneBasket: (state, action: PayloadAction<string>) => {
       const key = action.payload;
-      if (state[key]) {
+
+      if (state[key] && state[key] < 30) {
         state[key]++;
       } else {
         state[key] = 1;
