@@ -1,0 +1,49 @@
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 24px 32px;
+
+  background: var(--color-gray);
+}
+
+.logo {
+  color: var(--color-white);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 36px;
+}
+
+.basket {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.basketNum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  
+  border-radius: 8px;
+  background: var(--orange, #F50);
+
+  color: var(--color-white, #FFF);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.basketIcon {
+  width: 32px;
+  height: 32px;
+  color: var(--color-white);
+}

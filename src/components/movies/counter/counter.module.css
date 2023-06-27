@@ -1,0 +1,17 @@
+.counter {
+  display: flex;
+  gap: 8px;
+}
+
+.counterIcon {
+  width: 12px;
+  height: 12px;
+  color: var(--color-white);
+}
+
+.counterText {
+  color: var(--text-primary, #1B1F23);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+}

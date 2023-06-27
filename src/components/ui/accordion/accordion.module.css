@@ -1,0 +1,31 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.accordion_open {}
+
+.accordionTop {
+  flex: 1 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+
+  color: var(--text-primary, #1B1F23);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.accordionIcon {
+  width: 32px;
+  height: 32px;
+  color: var(--color-gray);
+  cursor: pointer;
+}
+
+.accordion_open .accordionIcon {
+  transform: rotate(180deg);
+}

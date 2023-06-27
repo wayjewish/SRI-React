@@ -1,0 +1,33 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 8px 16px;
+
+  cursor: pointer;
+  border-radius: 8px;
+  
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+
+.buttonPrimary {
+  background: var(--orange, #F50);
+  color: var(--color-white, #FFF);
+}
+
+.buttonPrimary:hover {
+  background: var(--orange-hover, #E94E00);
+}
+
+.buttonSecondary {
+  border: 1px solid var(--orange, #F50);
+  color: var(--orange, #F50);
+}
+
+.buttonSecondary:hover {
+  border: 1px solid var(--orange-hover, #E94E00);
+}

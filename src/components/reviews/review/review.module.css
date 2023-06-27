@@ -1,0 +1,38 @@
+.review {
+  display: flex;
+  gap: 32px;
+}
+
+.reviewImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  
+  border-radius: 8px;
+  background: var(--gray-5, #E0E0E0);
+}
+
+.reviewImageIcon {
+  width: 32px;
+  height: 32px;
+  color: var(--gray-3, #828282);
+}
+
+.right {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rightTop {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 20px;
+  line-height: 32px;
+}
+
