@@ -13,12 +13,12 @@ interface IProps {
 export default function Counter({ count, handlerMinus, handlerPlus }: IProps) {
   return (
     <div className={styles.counter}>
-      <ButtonLittle isDisabled={count <= 0}>
-        <MinusIcon className={styles.counterIcon} onClick={handlerMinus} />
+      <ButtonLittle isDisabled={count <= 0} onClick={handlerMinus}>
+        <MinusIcon className={styles.counterIcon} />
       </ButtonLittle>
       <p className={styles.counterText}>{count}</p>
-      <ButtonLittle isDisabled={count >= 30}>
-        <PlusIcon className={styles.counterIcon} onClick={handlerPlus} />
+      <ButtonLittle isDisabled={count >= 30} onClick={handlerPlus}>
+        <PlusIcon className={styles.counterIcon} />
       </ButtonLittle>
     </div>
   );
