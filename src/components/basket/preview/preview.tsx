@@ -31,6 +31,14 @@ export default function BacketPreview({ item }: IProps) {
     setIsOpenModal(false);
   };
 
+  const handleMinus = () => {
+    if (count > 1) {
+      dispatch(removeOneBasket(item.id));
+    } else {
+      setIsOpenModal(true);
+    }
+  };
+
   return (
     <Box className={styles.preview}>
       <Image
@@ -49,7 +57,7 @@ export default function BacketPreview({ item }: IProps) {
 
       <Counter
         count={count ? count : 0}
-        handlerMinus={() => dispatch(removeOneBasket(item.id))}
+        handlerMinus={handleMinus}
         handlerPlus={() => dispatch(addOneBasket(item.id))}
       />
 
